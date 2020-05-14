@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EuRent.AuthorizationPage">  
+   <ScrollView>
+        <StackLayout BackgroundColor="LightSkyBlue" Spacing="20">
+            <Label Text="Що ж, давайте знайомитись"
+                       FontSize="40"
+                       FontFamily="Futura"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       Margin="0, 50, 0, 0"/>
+            <Entry x:Name="pib" Placeholder="ПІБ"
+                       Margin="20, 10, 20, 0"
+                       FontFamily="Helvetica"/>
+            <Entry x:Name="adress" Placeholder="Адреса (Країна, місто, вулиця, №дому)"
+                       Margin="20, 10, 20, 0"
+                       FontFamily="Helvetica"/>
+            <Entry x:Name="tel" Placeholder="Телефон (включаючи код Вашої країни)"
+                       Margin="20, 10, 20, 0"
+                       FontFamily="Helvetica"
+                       Keyboard="Telephone"/>
+            <Entry x:Name="email" Placeholder="Ваш email"
+                       Margin="20, 10, 20, 0"
+                       FontFamily="Helvetica"
+                       Keyboard="Email"/>
+            <Entry x:Name="pass" Placeholder="Пароль до Вашого кабінету"
+                       Margin="20, 10, 20, 0"
+                       FontFamily="Helvetica"/>
+            <Button Text="Реєстрація"
+                        FontSize="30"
+                        FontAttributes="Bold"
+                        FontFamily="Helvetica"
+                        BorderColor="White"
+                        TextColor="Black"
+                        Margin="20, 20, 20, 0"
+                        BorderWidth="3"
+                        BackgroundColor="LightBlue"
+                        Clicked="Registration_Clicked"/>
+            <Button Text="В мене є акаунт :)"
+                        Margin="20, 0, 20, 0"
+                        FontSize="20"
+                        FontFamily="Apple"
+                        TextColor="Black"
+                        HorizontalOptions="End"
+                        Clicked="HaveAnAccount_Clicked"/>
+            <Label Text="Ми зберігаємо Ваші персональні дані, аби подальші користування послугами нашої компанії стали зручніше"
+                       FontFamily="Apple"
+                       FontSize="14"
+                       Margin="20, 0, 20, 0"
+                       HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

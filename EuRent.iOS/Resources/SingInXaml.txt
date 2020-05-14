@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EuRent.AuthorizationPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="LightSkyBlue" Spacing="25">
+                <Label Text="Вітаємо у EuRent"
+                       FontSize="40"
+                       FontFamily="Futura"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       Margin="0, 50, 0, 0"/>
+                <Label Text="Будь-ласка увійдіть у свій обліковий запис для початку роботи"
+                       FontFamily="Apple"
+                       FontSize="19"
+                       HorizontalTextAlignment="Center"/>
+                <Entry x:Name="email" Placeholder="Ваш email"
+                       Margin="20, 30, 20, 0"
+                       FontFamily="Helvetica"
+                       Keyboard="Email"/>
+                <Entry x:Name="pass" Placeholder="Ваш пароль"
+                       Margin="20, 10, 20, 0"
+                       IsPassword="True"/>
+                <StackLayout Margin="20, 0, 0, 0" Orientation="Horizontal">
+                    <Switch IsToggled="False"/>
+                    <Label Text=" Запам'ятати мене"
+                           FontSize="19"
+                           FontAttributes="Bold"
+                           FontFamily="Futura"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           />
+                </StackLayout>
+                <Button Text="Увійти"
+                        FontSize="30"
+                        FontAttributes="Bold"
+                        FontFamily="Helvetica"
+                        BorderColor="White"
+                        TextColor="Black"
+                        Margin="20, 60, 20, 0"
+                        BorderWidth="3"
+                        Clicked="SingIn_Clicked"/>
+                <Button Text="В мене немає акаунту :("
+                        Margin="20, 0, 20, 0"
+                        FontSize="20"
+                        FontFamily="Apple"
+                        TextColor="Black"
+                        HorizontalOptions="End"
+                        Clicked="NoAccount_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+  </ContentPage.Content>
+</ContentPage>
