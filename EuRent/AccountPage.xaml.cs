@@ -11,5 +11,10 @@ namespace EuRent
         {
             InitializeComponent();
         }
+
+        void Frame_Focused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            Content = new Label() { BackgroundColor = Color.CornflowerBlue };
+        }
     }
 }

@@ -16,7 +16,14 @@ namespace EuRent
         public MainPage()
         {
             InitializeComponent();
-            Console.WriteLine(Navigation.GetHashCode());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            /*NavigationPage navPage = (NavigationPage)App.Current.MainPage;
+            Page auth = navPage.Navigation.NavigationStack[0];
+            navPage.Navigation.RemovePage(auth);*/
         }
     }
 }

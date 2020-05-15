@@ -11,6 +11,7 @@ namespace EuRent
         static string SingInXaml, RegistrationXaml;
 
         Entry pib, adress, tel, email, pass;
+        Switch sw;
 
         public AuthorizationPage()
         {
@@ -30,6 +31,7 @@ namespace EuRent
 
         void NoAccount_Clicked(object sender, EventArgs e)
         {
+            sw = null;
             this.LoadFromXaml(RegistrationXaml);
             pib = this.FindByName<Entry>("pib");
             adress = this.FindByName<Entry>("adress");
@@ -40,12 +42,20 @@ namespace EuRent
 
         void SingIn_Clicked(object sender, EventArgs e)
         {
+            email = pass = null;
+            sw = null;
+            Content = new Label
+            {
+                BackgroundColor = Color.CornflowerBlue
+            };
+            //this.LoadFromXaml("<?xml version=\"1.0\" encoding=\"UTF-8\"?><ContentPage xmlns=\"http://xamarin.com/schemas/2014/forms\" xmlns:x=\"http://schemas.microsoft.com/winfx/2009/xaml\" x:Class=\"EuRent.AuthorizationPage\" BackgroundColor=\"LightSkyBlue\"> </ContentPage >"); // To load empty loading page
             Navigation.PushModalAsync(new MainPage());
         }
 
         void Registration_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainPage());
+            pib = adress = tel = null;
+            SingIn_Clicked(this, new EventArgs());
         }
 
         void HaveAnAccount_Clicked(object sender, EventArgs e)
@@ -53,7 +63,14 @@ namespace EuRent
             this.LoadFromXaml(SingInXaml);
             email = this.FindByName<Entry>("email");
             pass = this.FindByName<Entry>("pass");
+            sw = this.FindByName<Switch>("sw");
             pib = adress = tel = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            HaveAnAccount_Clicked(this, new EventArgs());
         }
     }
 }

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EuRent.AddCarPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="CornflowerBlue">
+            <Button x:Name="backButton"
+                    HorizontalOptions="Start"
+                    WidthRequest="200"
+                    Margin="20, 40, 20, 0"
+                    Text="&lt; Повернутися назад"
+                    FontSize="20"
+                    FontFamily="Apple"
+                    BackgroundColor="LightGreen"
+                    Clicked="backButton_Clicked"/>
+            <Label Text="Режим додавання авто"
+                   Margin="0, 40, 0, 0"
+                   HorizontalTextAlignment="Center"
+                   FontFamily="Futura"
+                   FontAttributes="Bold"
+                   FontSize="30"/>
+            <Picker x:Name="depPicker" Title="Відділення"
+                Margin="20, 30, 20, 0">
+                <Picker.Items>
+                    <x:String>Poland Warszawa Kolejowa 3</x:String>
+                    <x:String>Slovakia Bratislava Zochova 10</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker x:Name="classPicker"
+                    Margin="20, 20, 20, 0"
+                    Title="Клас авто">
+                <Picker.Items>
+                    <x:String>A – Хетчбек</x:String>
+                    <x:String>В – Економ седан</x:String>
+                    <x:String>С – Економ універсал</x:String>
+                    <x:String>D – Седан</x:String>
+                    <x:String>F – Універсал</x:String>
+                    <x:String>G – Кросовер</x:String>
+                    <x:String>J – Мікроавтобус</x:String>
+                </Picker.Items>
+            </Picker>
+           <Entry x:Name="carName"
+                Placeholder="Назва авто (марка + модель)"
+                Margin="20, 20, 20, 0"/>
+           <Picker x:Name="transmission" Title="Вид трансмісії"
+                Margin="20, 20, 20, 0">
+                <Picker.Items>
+                    <x:String>Автоматична (АКПП)</x:String>
+                    <x:String>Механічна (МКПП)</x:String>
+                </Picker.Items>
+           </Picker>
+           <Entry x:Name="m_year"
+                Placeholder="Рік виробу"
+                Margin="20, 20, 20, 0"
+                Keyboard="Numeric"/>
+           <Entry x:Name="basePrice"
+                Placeholder="Базова ціна за 1 день оренди"
+                Margin="20, 20, 20, 0"
+                Keyboard="Numeric"/>
+           <Button x:Name="addCars" Text="Додати авто"
+                BackgroundColor="LightGreen"
+                BorderColor="LightGreen"
+                BorderWidth="5"
+                Margin="20, 50, 20, 0"
+                FontFamily="Apple"
+                FontSize="30"
+                Clicked="addCars_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

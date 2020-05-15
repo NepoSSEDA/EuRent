@@ -1,7 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EuRent.AuthorizationPage"/>
+﻿<?xml version="1.0" encoding="UTF-8"?><ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EuRent.AuthorizationPage" BackgroundColor="LightSkyBlue"> </ContentPage>
+<!--<Label Text="Зачекайте будь-ласка"
+           FontFamily="Futura"
+           FontSize="30"
+           FontAttributes="Bold"
+           Margin="100, 350, 20, 0"/>-->
     <!--<ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="LightSkyBlue" Spacing="25">

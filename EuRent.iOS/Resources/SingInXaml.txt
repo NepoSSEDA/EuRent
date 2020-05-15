@@ -4,7 +4,7 @@
              x:Class="EuRent.AuthorizationPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout BackgroundColor="LightSkyBlue" Spacing="25">
+            <StackLayout BackgroundColor="CornflowerBlue" Spacing="25">
                 <Label Text="Вітаємо у EuRent"
                        FontSize="40"
                        FontFamily="Futura"
@@ -23,7 +23,7 @@
                        Margin="20, 10, 20, 0"
                        IsPassword="True"/>
                 <StackLayout Margin="20, 0, 0, 0" Orientation="Horizontal">
-                    <Switch IsToggled="False"/>
+                    <Switch x:Name="sw" IsToggled="False"/>
                     <Label Text=" Запам'ятати мене"
                            FontSize="19"
                            FontAttributes="Bold"
@@ -37,6 +37,7 @@
                         FontAttributes="Bold"
                         FontFamily="Helvetica"
                         BorderColor="White"
+                        BackgroundColor="LightSkyBlue"
                         TextColor="Black"
                         Margin="20, 60, 20, 0"
                         BorderWidth="3"

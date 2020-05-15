@@ -1,14 +1,113 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EuRent.RentPage"
-             Title="Авто">
-    <ContentPage.Icon>
-        <OnPlatform x:TypeArguments="FileImageSource">
-            <On Platform="iOS" Value="Cars.png"/>
-        </OnPlatform>
-    </ContentPage.Icon>
+             x:Class="EuRent.RentPage">
     <ContentPage.Content>
-        <Button Text="RentPage" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Rent_Clicked"/>
+        <ScrollView BackgroundColor="CornflowerBlue">
+            <StackLayout>
+                <Label Text="Шукайте авто за параметрами"
+                       HorizontalTextAlignment="Center"
+                       FontSize="30"
+                       FontFamily="Futura"
+                       FontAttributes="Bold"
+                       Margin="0, 40, 0, 0"
+                       />
+                <Picker x:Name="depPicker" Title="Відділення"
+                        Margin="20, 30, 20, 0">
+                    <Picker.Items>
+                        <x:String>Poland Warszawa Kolejowa 3</x:String>
+                        <x:String>Slovakia Bratislava Zochova 10</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Grid Margin="20, 4, 20, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition>
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Дата початку"
+                           FontFamily="Apple"
+                           FontSize="20"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="Дата повернення"
+                           FontFamily="Apple"
+                           FontSize="20"
+                           Grid.Column="1"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"/>
+                    <DatePicker x:Name="startDatePicker"
+                                Grid.Row="1"
+                                DateSelected="startDatePicker_DateSelected"/>
+                    <DatePicker x:Name="endDatePicker" Grid.Column="1" Grid.Row="1"/>
+                </Grid>
+                <Picker x:Name="classPicker"
+                        Margin="20, 20, 20, 0"
+                        Title="Клас авто"/>
+                <Grid Margin="20, 4, 20, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Мінімальна вартість"
+                           FontSize="20"
+                           FontFamily="Apple"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="Максимальна вартість"
+                           FontSize="20"
+                           FontFamily="Apple"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Grid.Column="1"/>
+                    <Label x:Name="min_price" TextColor="White"
+                           Text="152"
+                           FontFamily="Apple"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           FontSize="20"
+                           Grid.Row="1"/>
+                    <Label x:Name="max_price" TextColor="White"
+                           Text="152"
+                           FontFamily="Apple"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           FontSize="20"
+                           Grid.Row="1"
+                           Grid.Column="1"/>
+                    <Slider x:Name="sliderMin"
+                            ValueChanged="sliderMin_ValueChanged"
+                            Grid.Row="2"/>
+                    <Slider x:Name="sliderMax"
+                            ValueChanged="sliderMax_ValueChanged"
+                            Grid.Row="2"
+                            Grid.Column="1"/>
+                </Grid>
+                <Button x:Name="searchButton" Text="Пошук"
+                        Margin="20, 20, 20, 30"
+                        FontFamily="Apple"
+                        FontSize="30"
+                        BorderWidth="5"
+                        BorderColor="LightGreen"
+                        BackgroundColor="LightGreen"
+                        Clicked="searchButton_Clicked"/>
+                <Button x:Name="addCars" Text="Додати авто"
+                        BackgroundColor="LightGreen"
+                        BorderColor="LightGreen"
+                        BorderWidth="5"
+                        Margin="20, 0, 20, 0"
+                        FontFamily="Apple"
+                        FontSize="30"
+                        Clicked="addCars_Clicked"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

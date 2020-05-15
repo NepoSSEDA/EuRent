@@ -7,7 +7,19 @@
             x:Class="EuRent.MainPage"
             xmlns:local="clr-namespace:EuRent">
     <TabbedPage.Children>
-        <local:RentPage/>
-        <local:AccountPage/>
+        <local:RentPage Title="Авто">
+            <local:RentPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="Cars.png"/>
+                </OnPlatform>
+            </local:RentPage.Icon>
+        </local:RentPage>
+        <local:AccountPage Title="Кабінет">
+            <local:AccountPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="Account.png"/>
+                </OnPlatform>
+            </local:AccountPage.Icon>
+        </local:AccountPage>
     </TabbedPage.Children>
 </TabbedPage>

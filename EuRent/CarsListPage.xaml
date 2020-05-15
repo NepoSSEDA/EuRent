@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EuRent.CarsListPage">
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="CornflowerBlue">
+            <StackLayout>
+                <Label Text="За результатами пошуку знайдено 1 авто"
+                       FontFamily="Futura"
+                       FontSize="20"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Margin="0, 40, 0, 0"
+                       FontAttributes="Bold"/>
+                <Frame BorderColor="White" Margin="20, 10, 20, 0">
+                    <StackLayout>
+                        <Image Source="superb_2017.png"/>
+                        <Label Text="Skoda Superb 2017"
+                               FontSize="20"
+                               FontFamily="Apple"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Horizontal" Grid.Column="0"
+                                         HorizontalOptions="Center">
+                                <Image Source="automobile.png"
+                                       HeightRequest="30"/>
+                                <Label Text="МКПП"
+                                       FontFamily="Apple"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="15"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Column="1"
+                                         HorizontalOptions="Center">
+                                <Image Source="security.png"
+                                       HeightRequest="35"
+                                       />
+                                <Label Text="5"
+                                       FontFamily="Apple"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="15"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Column="2"
+                                         HorizontalOptions="Center">
+                                <Image Source="transportation.png"
+                                       HorizontalOptions="Center"
+                                       HeightRequest="35"/>
+                                <Label Text="4"
+                                       FontFamily="Apple"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="15"/>
+                            </StackLayout>
+                        </Grid>
+                        <Label Text="Poland Warszawa Kolejowa 3"
+                               FontFamily="Apple"
+                               FontSize="20"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

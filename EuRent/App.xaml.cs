@@ -11,7 +11,6 @@ namespace EuRent
             InitializeComponent();
 
             MainPage = new AuthorizationPage();
-            Console.WriteLine(MainPage.GetHashCode());
         }
 
         protected override void OnStart()

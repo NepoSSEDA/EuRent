@@ -140,5 +140,11 @@
     <BundleResource Include="Resources\Account.png" />
     <BundleResource Include="Resources\RegistrationXaml.txt" />
     <BundleResource Include="Resources\SingInXaml.txt" />
+    <BundleResource Include="Resources\superb_2017.png" />
+    <BundleResource Include="Resources\security.png" />
+    <BundleResource Include="Resources\transportation.png" />
+    <BundleResource Include="Resources\automobile.png" />
+    <BundleResource Include="Resources\button.png" />
+    <BundleResource Include="Resources\signaling.png" />
   </ItemGroup>
 </Project>
