@@ -11,5 +11,10 @@ namespace EuRent
         {
             InitializeComponent();
         }
+
+        private void backButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

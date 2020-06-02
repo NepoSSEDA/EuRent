@@ -5,8 +5,8 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             x:Class="EuRent.MainPage"
-            xmlns:local="clr-namespace:EuRent">
-    <TabbedPage.Children>
+            xmlns:local="clr-namespace:EuRent"/>
+    <!--<TabbedPage.Children>
         <local:RentPage Title="Авто">
             <local:RentPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
@@ -22,4 +22,4 @@
             </local:AccountPage.Icon>
         </local:AccountPage>
     </TabbedPage.Children>
-</TabbedPage>
+</TabbedPage>-->

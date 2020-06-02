@@ -1,76 +1,111 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
+using Mono.Data.Sqlite;
 
 namespace EuRent
 {
     public partial class AuthorizationPage : ContentPage
     {
-        static string SingInXaml, RegistrationXaml;
-
-        Entry pib, adress, tel, email, pass;
-        Switch sw;
+        //static string SingInXaml, RegistrationXaml;
+        SqliteConnection conn; //= new SqliteConnection(@"Data Source = /Users/familylipovetskiy/Documents/car_rent.db; Version=3;");
 
         public AuthorizationPage()
         {
-            //InitializeComponent();
-            using (StreamReader sr = new StreamReader("SingInXaml.txt"))
+            string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "car_rent1.db");
+            if (!File.Exists(filepath))
+                File.Copy("car_rent1.db", filepath);
+            conn = new SqliteConnection(@"Data Source = " + filepath + "; Version = 3;");
+            filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "IsToggled.txt");
+            if (!File.Exists(filepath))
             {
-                SingInXaml = sr.ReadToEnd();
+                FileStream fs = File.Create(filepath);
+                fs.Close();
+            }
+            string line = File.ReadAllText(filepath);
+            if (!string.IsNullOrWhiteSpace(line))
+            {
+                conn.Open();
+                Navigation.PushModalAsync(new MainPage(conn, long.Parse(line)));
             }
 
-            using (StreamReader sr = new StreamReader("RegistrationXaml.txt"))
-            {
-                RegistrationXaml = sr.ReadToEnd();
-            }
+            InitializeComponent();
+            //using (StreamReader sr = new StreamReader("/Users/familylipovetskiy/Library/Developer/CoreSimulator/Devices/9D1B4BFA-8660-4EEF-90FE-E8DD11046377/data/Containers/Bundle/Application/FFA11B6C-7B54-4E26-B744-1500D7EA8BD5/EuRent.iOS.app/IsToggled.txt"))
 
-            HaveAnAccount_Clicked(this, new EventArgs());
+            //HaveAnAccount_Clicked(this, new EventArgs());
         }
 
         void NoAccount_Clicked(object sender, EventArgs e)
         {
-            sw = null;
+            /*sw = null;
             this.LoadFromXaml(RegistrationXaml);
             pib = this.FindByName<Entry>("pib");
             adress = this.FindByName<Entry>("adress");
             tel = this.FindByName<Entry>("tel");
             email = this.FindByName<Entry>("email");
-            pass = this.FindByName<Entry>("pass");
+            pass = this.FindByName<Entry>("pass");*/
+            email.Text = null;
+            pass.Text = null;
+            sw.IsToggled = false;
+            Navigation.PushModalAsync(new RegistrationPage(conn), false);
         }
 
         void SingIn_Clicked(object sender, EventArgs e)
         {
-            email = pass = null;
-            sw = null;
-            Content = new Label
+            if (!(conn.State == System.Data.ConnectionState.Open))
+                conn.Open();
+
+            SqliteCommand get_users_by_email = new SqliteCommand("SELECT [client_ID] FROM clients WHERE [client_email] = @email;", conn);
+            get_users_by_email.Parameters.AddWithValue("@email", email.Text);
+            SqliteDataReader dataReader = get_users_by_email.ExecuteReader();
+            if (!dataReader.Read()) // If here is no rows
             {
-                BackgroundColor = Color.CornflowerBlue
-            };
-            //this.LoadFromXaml("<?xml version=\"1.0\" encoding=\"UTF-8\"?><ContentPage xmlns=\"http://xamarin.com/schemas/2014/forms\" xmlns:x=\"http://schemas.microsoft.com/winfx/2009/xaml\" x:Class=\"EuRent.AuthorizationPage\" BackgroundColor=\"LightSkyBlue\"> </ContentPage >"); // To load empty loading page
-            Navigation.PushModalAsync(new MainPage());
-        }
+                DisplayAlert("Користувача не знайдено", "Користувача з поштою " + email.Text + " не було знайдено", "Ок");
+                return; // To exit singin process
+            }   
+            long ID = (long)dataReader["client_ID"];
+            SqliteCommand check_pass = new SqliteCommand("SELECT client_lname, client_name, client_pass FROM clients WHERE client_ID = @ID", conn);
+            check_pass.Parameters.AddWithValue("@ID", ID);
+            dataReader = check_pass.ExecuteReader();
+            dataReader.Read();
+            if (pass.Text != (string)dataReader["client_pass"]) // If user pass isn`t like in database
+            {
+                DisplayAlert("Невірний пароль", "Пароль, що був введений не є дійсним для " + email.Text, "Спробувати ще раз");
+                return; 
+            } 
+             
+            //string name = (string)dataReader["client_lname"] + " " + (string)dataReader["client_name"];
+            //bool IsAdmin = false;
+            //if (email.Text == "admin")
+            //    IsAdmin = true;
 
-        void Registration_Clicked(object sender, EventArgs e)
-        {
-            pib = adress = tel = null;
-            SingIn_Clicked(this, new EventArgs());
-        }
+            //using (StreamWriter writer = new StreamWriter("/Users/familylipovetskiy/Library/Developer/CoreSimulator/Devices/9D1B4BFA-8660-4EEF-90FE-E8DD11046377/data/Containers/Bundle/Application/FFA11B6C-7B54-4E26-B744-1500D7EA8BD5/EuRent.iOS.app/IsToggled.txt", false))
+            if (sw.IsToggled)
+            {
+                /*using (StreamWriter writer = new StreamWriter("/Users/familylipovetskiy/Documents/IsToggled.txt"))
+                {
+                    writer.WriteLine(ID);
+                }*/
 
-        void HaveAnAccount_Clicked(object sender, EventArgs e)
-        {
-            this.LoadFromXaml(SingInXaml);
-            email = this.FindByName<Entry>("email");
-            pass = this.FindByName<Entry>("pass");
-            sw = this.FindByName<Switch>("sw");
-            pib = adress = tel = null;
+                string folderpath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Console.WriteLine(folderpath);
+                File.WriteAllText(Path.Combine(folderpath, "IsToggled.txt"), ID.ToString());
+            }
+
+            //Loading a next page
+            stack.IsVisible = false;
+            email.Text = null;
+            pass.Text = null;
+            sw.IsToggled = false;
+            Navigation.PushModalAsync(new MainPage(conn, ID));
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            HaveAnAccount_Clicked(this, new EventArgs());
+            if (!stack.IsVisible) // If Content is just empty blue screen then draw UI
+                stack.IsVisible = true;
         }
     }
 }

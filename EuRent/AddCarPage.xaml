@@ -5,14 +5,18 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="CornflowerBlue">
             <Button x:Name="backButton"
-                    HorizontalOptions="Start"
-                    WidthRequest="200"
-                    Margin="20, 40, 20, 0"
-                    Text="&lt; Повернутися назад"
-                    FontSize="20"
-                    FontFamily="Apple"
-                    BackgroundColor="LightGreen"
-                    Clicked="backButton_Clicked"/>
+                   HorizontalOptions="Start"
+                   WidthRequest="230"
+                   Margin="20, 40, 20, 0"
+                   Text="&lt; Повернутися назад"
+                   FontSize="20"
+                   FontFamily="Apple"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   BorderWidth="2"
+                   BackgroundColor="LightSkyBlue"
+                   BorderColor="White"
+                   Clicked="backButton_Clicked"/>
             <Label Text="Режим додавання авто"
                    Margin="0, 40, 0, 0"
                    HorizontalTextAlignment="Center"
@@ -21,10 +25,6 @@
                    FontSize="30"/>
             <Picker x:Name="depPicker" Title="Відділення"
                 Margin="20, 30, 20, 0">
-                <Picker.Items>
-                    <x:String>Poland Warszawa Kolejowa 3</x:String>
-                    <x:String>Slovakia Bratislava Zochova 10</x:String>
-                </Picker.Items>
             </Picker>
             <Picker x:Name="classPicker"
                     Margin="20, 20, 20, 0"

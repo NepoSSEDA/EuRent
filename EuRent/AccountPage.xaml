@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EuRent.AccountPage">
+             x:Class="EuRent.AccountPage"
+             xmlns:local="clr-namespace:EuRent">
     <ContentPage.Content>
         <StackLayout BackgroundColor="CornflowerBlue">
             <Label Text="Особистий кабінет"
@@ -13,10 +14,14 @@
                        />
             <StackLayout Orientation="Horizontal" Spacing="1"
                          HorizontalOptions="Center">
-                <Label Text="Вітаємо,"
+                <Label Text="Вітаємо, "
                    FontFamily="Futura"
                    FontSize="20"/>
-                <Label Text=" Donald Trump!"
+                <Label x:Name="label" Text=""
+                       FontFamily="Futura"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                <Label Text="!"
                        FontFamily="Futura"
                        FontAttributes="Bold"
                        FontSize="20"/>
@@ -49,6 +54,17 @@
                            FontSize="20"/>
                 </StackLayout>
             </Frame>
+            <Button Text="  Вийти  "
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="Center"
+                    Margin="0, 0, 0, 40"
+                    FontFamily="Futura"
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    TextColor="Black"
+                    BackgroundColor="OrangeRed"
+                    Clicked="quit_Clicked"
+                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

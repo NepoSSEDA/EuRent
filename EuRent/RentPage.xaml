@@ -4,7 +4,7 @@
              x:Class="EuRent.RentPage">
     <ContentPage.Content>
         <ScrollView BackgroundColor="CornflowerBlue">
-            <StackLayout>
+            <StackLayout x:Name="s">
                 <Label Text="Шукайте авто за параметрами"
                        HorizontalTextAlignment="Center"
                        FontSize="30"
@@ -14,10 +14,6 @@
                        />
                 <Picker x:Name="depPicker" Title="Відділення"
                         Margin="20, 30, 20, 0">
-                    <Picker.Items>
-                        <x:String>Poland Warszawa Kolejowa 3</x:String>
-                        <x:String>Slovakia Bratislava Zochova 10</x:String>
-                    </Picker.Items>
                 </Picker>
                 <Grid Margin="20, 4, 20, 0">
                     <Grid.RowDefinitions>
@@ -46,7 +42,24 @@
                 </Grid>
                 <Picker x:Name="classPicker"
                         Margin="20, 20, 20, 0"
-                        Title="Клас авто"/>
+                        Title="Клас авто">
+                    <Picker.Items>
+                        <x:String>A – Хетчбек</x:String>
+                        <x:String>В – Економ седан</x:String>
+                        <x:String>С – Економ універсал</x:String>
+                        <x:String>D – Седан</x:String>
+                        <x:String>F – Універсал</x:String>
+                        <x:String>G – Кросовер</x:String>
+                        <x:String>J – Мікроавтобус</x:String>
+                    </Picker.Items>
+                </Picker>
+               <Picker x:Name="transmission" Title="Вид трансмісії"
+                    Margin="20, 20, 20, 0">
+                    <Picker.Items>
+                        <x:String>Автоматична (АКПП)</x:String>
+                        <x:String>Механічна (МКПП)</x:String>
+                    </Picker.Items>
+                </Picker>
                 <Grid Margin="20, 4, 20, 0">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -69,14 +82,14 @@
                            HorizontalTextAlignment="Center"
                            Grid.Column="1"/>
                     <Label x:Name="min_price" TextColor="White"
-                           Text="152"
+                           Text="150"
                            FontFamily="Apple"
                            VerticalTextAlignment="Center"
                            HorizontalTextAlignment="Center"
                            FontSize="20"
                            Grid.Row="1"/>
                     <Label x:Name="max_price" TextColor="White"
-                           Text="152"
+                           Text="150"
                            FontFamily="Apple"
                            VerticalTextAlignment="Center"
                            HorizontalTextAlignment="Center"
@@ -99,14 +112,6 @@
                         BorderColor="LightGreen"
                         BackgroundColor="LightGreen"
                         Clicked="searchButton_Clicked"/>
-                <Button x:Name="addCars" Text="Додати авто"
-                        BackgroundColor="LightGreen"
-                        BorderColor="LightGreen"
-                        BorderWidth="5"
-                        Margin="20, 0, 20, 0"
-                        FontFamily="Apple"
-                        FontSize="30"
-                        Clicked="addCars_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

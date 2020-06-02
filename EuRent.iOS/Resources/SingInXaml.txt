@@ -5,7 +5,8 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="CornflowerBlue" Spacing="25">
-                <Label Text="Вітаємо у EuRent"
+                <Label x:Name="label"
+                       Text="Вітаємо у EuRent"
                        FontSize="40"
                        FontFamily="Futura"
                        FontAttributes="Bold"

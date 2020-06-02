@@ -7,9 +7,11 @@ namespace EuRent
 {
     public partial class AddCarPage : ContentPage
     {
-        public AddCarPage()
+        public AddCarPage(Picker depPicker)
         {
             InitializeComponent();
+            foreach (string item in depPicker.Items)
+                this.depPicker.Items.Add(item);
         }
 
         void backButton_Clicked(System.Object sender, System.EventArgs e)

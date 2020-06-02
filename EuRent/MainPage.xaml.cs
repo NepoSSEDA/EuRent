@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using Mono.Data.Sqlite;
 
 namespace EuRent
 {
@@ -12,10 +9,11 @@ namespace EuRent
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : TabbedPage
-    {
-        public MainPage()
+    { 
+        public MainPage(SqliteConnection conn, long ID)
         {
-            InitializeComponent();
+            Children.Add(new RentPage(conn, ID) { Title = "Авто", IconImageSource = "Cars.png" });
+            Children.Add(new AccountPage(conn, ID) { Title = "Кабінет", IconImageSource = "Account.png" });
         }
 
         protected override void OnAppearing()
